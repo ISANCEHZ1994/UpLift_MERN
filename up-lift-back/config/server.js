@@ -32,11 +32,12 @@ io.on("connection", ( socket ) => {
 });
 
 app.get('/', (req, res) => res.send('This is the API and it. Is. RUNNING!!'));
+
 const PORT = process.env.PORT || 3001;
+
 app.listen(PORT, () => console.log(`SERVER started on ${PORT}`));
 
-//Define Routes
-// app.use('/api/users', require('./routes/api/users'));
-// app.use('/api/auth', require('./routes/api/auth'));
-// app.use('/api/profile', require('./routes/api/profile'));
-// app.use('/api/posts', require('./routes/api/posts'));
+// cant be the same port as express/node port..
+server.listen( 3000, () => {
+    console.log('server running using SOCKETIO')
+});

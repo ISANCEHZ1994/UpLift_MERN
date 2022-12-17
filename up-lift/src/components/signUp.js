@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // new way to change pages using react-router-dom
 
     const [formData, setFormData] = useState({
         name: '',
