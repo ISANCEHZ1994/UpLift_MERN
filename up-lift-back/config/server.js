@@ -4,12 +4,15 @@ const http = require("http");
 const cors = require('cors');
 const { Server } = require("socket.io");
 
+const PORT = process.env.PORT || 3001;
+
 // const connectDB = require('./db');
 // connectDB();
 app.use(express.json({ extended: false }));
 app.use(cors());
 
 const server = http.createServer(app);
+
 const io = new Server ( server, {
     cors: {
         // which url origin will be called
@@ -18,7 +21,7 @@ const io = new Server ( server, {
     }
 });
 
-io.on("connection", ( socket ) => {
+io.on("connection", ( socket ) => {    
     console.log(`User Connected: ${socket.id}`);
 
     socket.on("join_room", (data) => {
@@ -32,8 +35,7 @@ io.on("connection", ( socket ) => {
 });
 
 app.get('/', (req, res) => res.send('This is the API and it. Is. RUNNING!!'));
-
-const PORT = process.env.PORT || 3001;
+// app.get('/', (req, res) => res.sendFile(__dirname + `/index.html`));
 
 app.listen(PORT, () => console.log(`SERVER started on ${PORT}`));
 
