@@ -3,11 +3,11 @@ const app = express();
 const http = require("http");
 const cors = require('cors');
 const { Server } = require("socket.io");
+const connectDB = require('./db');
 
 const PORT = process.env.PORT || 3001;
+connectDB();
 
-// const connectDB = require('./db');
-// connectDB();
 app.use(express.json({ extended: false }));
 app.use(cors());
 
@@ -35,7 +35,8 @@ io.on("connection", ( socket ) => {
 });
 
 app.get('/', (req, res) => res.send('This is the API and it. Is. RUNNING!!'));
-// app.get('/', (req, res) => res.sendFile(__dirname + `/index.html`));
+app.use('/api/users', require('../routes/users'));
+app.use('/api/posts', require('../routes/posts'));
 
 app.listen(PORT, () => console.log(`SERVER started on ${PORT}`));
 
