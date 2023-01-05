@@ -35,8 +35,9 @@ io.on("connection", ( socket ) => {
 });
 
 app.get('/', (req, res) => res.send('This is the API and it. Is. RUNNING!!'));
-app.use('/api/users', require('../routes/users'));
-app.use('/api/posts', require('../routes/posts'));
+app.use('/users',   require('../routes/users'));
+app.use('/posts',   require('../routes/posts'));
+app.use('/profile', require('../routes/profile'));
 
 app.listen(PORT, () => console.log(`SERVER started on ${PORT}`));
 

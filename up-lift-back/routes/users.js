@@ -9,8 +9,7 @@ router.post('/', [
     check('email', 'NOTE: Please include a valid email').isEmail(),
     check('password', 'NOTE: Please enter a password with 6 characters or more').isLength({ min: 6 })
 ], async ( req, res ) => {
-    // console.log(req);
-    // console.log(res);
+
     const errors = validationResult(req);
 
     if( !errors.isEmpty() ){
