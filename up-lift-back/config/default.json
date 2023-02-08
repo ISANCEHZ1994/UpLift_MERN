@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://isanchez9413:Is092094$@upliftdatabase.x5q7rjt.mongodb.net/?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://isanchez9413:Is092094$@upliftdatabase.x5q7rjt.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSecret": "kingdomhearts1394$"
 }
