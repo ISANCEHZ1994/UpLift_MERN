@@ -1,21 +1,12 @@
 import React, { Fragment } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
+import NavBar from "./navBar";
+import { Link } from 'react-router-dom'; 
 
 const WelcomePage = () => {
 
     return (
         <>
-            <nav class="navbar bg-dark">
-                <h1>
-                    <Link to='/'><FontAwesomeIcon icon={faDumbbell} /> UpLift</Link>
-                </h1>
-                <ul>
-                    <li><Link to="/register">Register</Link></li>                    
-                    <li><Link to="/login">Login</Link></li>
-                </ul>
-            </nav>
+            <NavBar/>
             <section className="landing">
                 <div className="dark-overlay">
                     <div className="landing-inner">

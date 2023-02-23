@@ -11,28 +11,28 @@ connectDB();
 app.use(express.json({ extended: false }));
 app.use(cors());
 
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
-const io = new Server ( server, {
-    cors: {
-        // which url origin will be called
-        origin: "http://localhost:3000",
-        methods: [ "GET", "POST" ]
-    }
-});
+// const io = new Server ( server, {
+//     cors: {
+//         // which url origin will be called
+//         origin: "http://localhost:3000",
+//         methods: [ "GET", "POST" ]
+//     }
+// });
 
-io.on("connection", ( socket ) => {    
-    console.log(`User Connected: ${socket.id}`);
+// io.on("connection", ( socket ) => {    
+//     console.log(`User Connected: ${socket.id}`);
 
-    socket.on("join_room", (data) => {
-        socket.join(data);
-        console.log(`USER with ID: ${socket.id} joined room: ${data}`)
-    });
+//     socket.on("join_room", (data) => {
+//         socket.join(data);
+//         console.log(`USER with ID: ${socket.id} joined room: ${data}`)
+//     });
 
-    socket.on("disconnect", () => {
-        console.log("USER DISCONNECTED", socket.id);
-    });
-});
+//     socket.on("disconnect", () => {
+//         console.log("USER DISCONNECTED", socket.id);
+//     });
+// });
 
 app.get('/', (req, res) => res.send('This is the API and it. Is. RUNNING!!'));
 app.use('/users',   require('../routes/users'));
@@ -42,6 +42,6 @@ app.use('/profile', require('../routes/profile'));
 app.listen(PORT, () => console.log(`SERVER started on ${PORT}`));
 
 // cant be the same port as express/node port..
-server.listen( 3000, () => {
-    console.log('server running using SOCKETIO')
-});
+// server.listen( 3000, () => {
+//     console.log('server running using SOCKETIO')
+// });

@@ -23,6 +23,9 @@ const ProfileSchema = new mongoose.Schema({
     favoriteWorkouts: {
         type: [String]
     },
+    lifeQuote:{
+        type: String
+    },
     date: {
         type: Date,
         default: Date.now
