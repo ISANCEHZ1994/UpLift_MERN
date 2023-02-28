@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { login } from "../../actions/auth";
 
 const Login = () => {
 
@@ -17,7 +18,7 @@ const Login = () => {
     
     const onSubmit = e => {
         e.preventDefault();
-        // login(email, password) // now using the deconstructed function here!
+        login(email, password) // now using the deconstructed function here!
         console.log('SUCCESS')
     };
 
@@ -60,3 +61,5 @@ const Login = () => {
 };
 
 export default Login;
+
+// since we are using redux use connect!
