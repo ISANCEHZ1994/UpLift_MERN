@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { login } from "../../actions/auth";
+import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 
 const Login = () => {
 
@@ -20,6 +22,10 @@ const Login = () => {
         e.preventDefault();
         login(email, password) // now using the deconstructed function here!
         console.log('SUCCESS')
+    };
+
+    if(isAuthenticated){
+        return <Redirect to='/feed'/>
     };
 
     return (
@@ -60,6 +66,13 @@ const Login = () => {
     );
 };
 
-export default Login;
+Login.prototype = {
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+};
 
-// since we are using redux use connect!
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect( mapStateToProps, { login })( Login ) ;
