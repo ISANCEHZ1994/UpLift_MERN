@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router } from 'react-router-dom';
+// import { BrowserRouter as Router } from 'react-router-dom';
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// NOTE: do not remove STRICTMODE
 root.render(
-  <React.StrictMode>
-    <Router>
+  <React.StrictMode>   
       <App />
-    </Router>
   </React.StrictMode>
 );
 

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { login } from "../../actions/auth";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 
-const Login = () => {
+const Login = ({ login, isAuthenticated }) => {
 
     const [formData, setFormData] = useState({
         email: '',
@@ -25,7 +25,7 @@ const Login = () => {
     };
 
     if(isAuthenticated){
-        return <Redirect to='/feed'/>
+        return <Navigate to='/feed'/>
     };
 
     return (

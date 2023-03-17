@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    USER_LOADED
+    USER_LOADED,
+    AUTH_ERROR
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -10,7 +11,7 @@ export const loadUser = () => async dispatch => {
     if( localStorage.token ){
         try{
             setAuthToken(localStorage.token);
-            const res = await axios.aget('/api/auth');
+            const res = await axios.get('/auth');
             dispatch({
                 type: USER_LOADED,
                 payload: res.data
@@ -39,7 +40,7 @@ export const login = (email, password) => async dispatch => {
     const body = JSON.stringify({ email, password });
 
     try{
-        const res = await axios.post( '/api/auth', body, config );
+        const res = await axios.post( '/auth', body, config );
         dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data

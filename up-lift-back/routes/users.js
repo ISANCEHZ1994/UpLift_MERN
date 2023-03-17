@@ -4,7 +4,8 @@ const { check, validationResult } = require('express-validator'); // https://exp
 
 const User = require('../models/User');
 
-router.post('/', [
+router.post(
+    '/', [
     check('name', 'NOTE: Name is required!').not().isEmpty(),
     check('email', 'NOTE: Please include a valid email').isEmail(),
     check('password', 'NOTE: Please enter a password with 6 characters or more').isLength({ min: 6 })

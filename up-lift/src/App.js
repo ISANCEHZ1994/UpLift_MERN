@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import WelcomePage from './components/layout/welcomePage';
 import FeedPage from './components/feedPage';
 import NotFound from './components/layout/notFound';
@@ -12,7 +12,7 @@ import store from './store';
 function App() {
   return (
     <Provider store={store}>
-      <section>
+      <Router>     
         <Routes>
           <Route exact path='/' element={<WelcomePage/>} />
           <Route exact path='/feed' element={<FeedPage/>}/>
@@ -20,7 +20,7 @@ function App() {
           <Route exact path='/login' element={<Login/>}/>
           <Route component={<NotFound/>}/>
         </Routes>
-      </section>
+      </Router>
     </Provider>
   );
 }
