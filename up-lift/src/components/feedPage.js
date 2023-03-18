@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
-import io from "socket.io-client";
+import { Link } from 'react-router-dom';
+// import io from "socket.io-client";
 import { useState } from "react";
+import NavBar from "./layout/navBar";
 
 // const socket = io.connect("http://localhost:3000");
 
@@ -19,10 +21,20 @@ const FeedPage = () => {
 
     return (
         <Fragment>
+            <NavBar/>
+            <br></br>
+            <br></br>
             <div className="profile-grid my-1">
                 <h2>this should be where we are see the feed</h2>
                 <div className="profile-exp bg-white p-2">
-                    
+                    <>
+                        <h3>Dashboard</h3>
+                        
+                    </>
+                    <div>
+                        Maybe something else should be here too..
+                        <Link ></Link>
+                    </div>
                     {/* <>
                         <h2>Join a Chat</h2>
                         <input type="text" placeholder="Room ID" onChange={(e) => setRoom(e.target.value)}/>
@@ -30,7 +42,9 @@ const FeedPage = () => {
                         <button>Join The Room</button>
                     </> */}
                 </div>
-            </div>            
+                
+            </div>   
+            <footer>sign out down here: <Link>SIGN OUT</Link></footer>         
         </Fragment>
     )
 };

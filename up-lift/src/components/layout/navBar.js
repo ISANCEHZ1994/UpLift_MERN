@@ -1,9 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { logout } from '../../actions/auth';
 
-const NavBar = () => {
+const NavBar = ({
+    auth: {
+        isAuthenticated, loading
+    }, logout
+}) => {
 
     // create an auth that we can reflect and change this when someone signs in
 
@@ -24,4 +31,13 @@ const NavBar = () => {
     )
 }
 
-export default NavBar;
+NavBar.propTypes = {
+    logout: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps, {logout})(NavBar);
