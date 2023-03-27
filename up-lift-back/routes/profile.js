@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const config = require('config');
+const auth = require('../middleware/auth');
+const { check, validationResult } = require('express-validator');
 
+const User = require('../models/User');
+const Post = require('../models/Post');
 const Profile = require('../models/Profile');
-const User    = require('../models/User');
 
-router.get('/me', async (req, res) => {
+router.get('/me', auth, async (req, res) => {
     try {
         const profile = await Profile.findOne({ user: req.user.id }).populate("user", ['name']);
 
@@ -18,5 +22,21 @@ router.get('/me', async (req, res) => {
         res.status(500).send('Server Error');
     };
 });
+
+router.post('/', [ auth, [
+
+]
+], async (req, res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({
+            errors: errors.array()
+        })
+    };
+
+    const {
+        
+    }
+})
 
 module.exports = router;
