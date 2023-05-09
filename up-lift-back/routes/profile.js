@@ -35,8 +35,20 @@ router.post('/', [ auth, [
     };
 
     const {
-        
-    }
+        website,
+        location,
+        occupation,
+        status,
+        bio,
+        favoriteWorkouts,
+        lifeQuote        
+    } = req.body;
+
+    // create a profile object that will be inserted to the database!
+    const profileFields = {};
+    profileFields.user = req.user.id;
+    
+
 })
 
 module.exports = router;

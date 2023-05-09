@@ -26,6 +26,10 @@ const ProfileSchema = new mongoose.Schema({
     lifeQuote:{
         type: String
     },
+    photos: {
+        
+    },
+    // how to add array of friends?
     date: {
         type: Date,
         default: Date.now
