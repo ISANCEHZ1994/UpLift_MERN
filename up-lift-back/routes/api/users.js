@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator'); // https://express-validator.github.io/docs/check-api.html
 
-const User = require('../models/User');
+const User = require('../../models/User');
 
 router.post(
     '/', [
@@ -22,7 +22,9 @@ router.post(
     try {
         let user = await User.findOne({email});
         if ( user ) {
-            return res.status(400).json({ errors: [{ msg: 'That user already EXISTS!' }] });
+            return res.status(400).json({ 
+                errors: [{ msg: 'That user already EXISTS!' }] 
+            });
         };
         user = new User({
             name,
@@ -31,6 +33,8 @@ router.post(
         }); 
         
         await user.save();
+
+        res.send('User Registered!').send(body)
 
     } catch (err) {
         console.log(err.message)

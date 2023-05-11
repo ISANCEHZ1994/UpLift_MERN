@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const config = require('config');
-const auth = require('../middleware/auth');
+const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
-const User = require('../models/User');
-const Post = require('../models/Post');
-const Profile = require('../models/Profile');
+const User = require('../../models/User');
+const Post = require('../../models/Post');
+const Profile = require('../../models/Profile');
 
 router.get('/me', auth, async (req, res) => {
     try {

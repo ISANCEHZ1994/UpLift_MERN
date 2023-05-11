@@ -12,10 +12,11 @@ app.use(express.json({ extended: false }));
 app.use(cors());
 
 app.get('/', (req, res) => res.send('This is the API and it. Is. RUNNING!!'));
-app.use('/users', require('../routes/users'));
-app.use('/auth', require('../routes/auth'));
-app.use('/posts', require('../routes/posts'));
-app.use('/profile', require('../routes/profile'));
+// changed the folder path to '/routes/API/{route}' so that there is less confusion with routes '/' => BEING MORE SPECIFIC
+app.use('/api/users', require('../routes/api/users'));
+app.use('/api/auth', require('../routes/api/auth'));
+app.use('/api/posts', require('../routes/api/posts'));
+app.use('/api/profile', require('../routes/api/profile'));
 
 app.listen(PORT, () => console.log(`SERVER started on port ${PORT}`));
 
